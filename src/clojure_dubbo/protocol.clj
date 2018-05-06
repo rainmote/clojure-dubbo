@@ -67,12 +67,9 @@
                          :parameter-type "Ljava/lang/String;"
                          :parameter "HelloWorld"
                          :attachments {"path" default-service-name}}
-        _content (merge-with (fn [v1 v2]
-                               (when-not v2
-                                 v1))
+        _content (merge-with (fn [v1 v2] (or v2 v1))
                              default-content
                              content)]
-    (println _content)
     {:magic magic
      :flags flags
      :status (:OK status-map)
